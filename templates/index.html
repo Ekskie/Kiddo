@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Kiddo - Choose a Drawing</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
+</head>
+<body>
+    <header>
+        <img src="{{ url_for('static', filename='images/logo.png') }}" alt="Kiddo Logo" class="logo">
+    </header>
+    <h1>Choose a Drawing</h1>
+    <div class="drawing-list">
+        {% for drawing in drawings %}
+            <a href="{{ url_for('trace', shape=drawing) }}" class="drawing-option">
+                <img src="{{ url_for('static', filename='images/' + drawing + '.png') }}" alt="{{ drawing }}" class="drawing-thumbnail">
+            </a>
+        {% endfor %}
+    </div>
+</body>
+</html>
