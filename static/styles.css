@@ -1,76 +1,234 @@
-/* styles.css */
+/* Modern Styles for Kiddo */
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap');
+
+:root {
+    --primary-color: #ff6f61;
+    --secondary-color: #ff9a9e;
+    --background-gradient: linear-gradient(135deg, #ff9a9e, #fad0c4);
+    --text-color: #333;
+    --button-hover: #d9534f;
+    --nav-bg: rgba(255, 255, 255, 0.7);
+    --shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+}
+
 body {
     font-family: 'Poppins', sans-serif;
     text-align: center;
-    background: linear-gradient(135deg, #ff9a9e, #fad0c4);
-    color: #444;
+    background: var(--background-gradient);
+    color: var(--text-color);
     margin: 0;
     padding: 0;
 }
 
+/* Header */
 header {
-    background: #fff;
-    padding: 10px;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    background: rgba(255, 255, 255, 0.8);
+    padding: 15px;
+    box-shadow: var(--shadow);
+    backdrop-filter: blur(10px);
+    position: sticky;
+    top: 0;
+    z-index: 1000;
 }
 
 .logo {
-    max-width: 150px;
+    max-width: 140px;
 }
 
+/* Main Content */
 h1 {
-    font-size: 2rem;
+    font-size: 2.2rem;
+    font-weight: 600;
     margin-top: 20px;
 }
 
+/* Drawing List */
 .drawing-list {
     display: flex;
     flex-wrap: wrap;
     justify-content: center;
     gap: 20px;
-    padding: 20px;
+    padding: 30px 10px;
 }
 
 .drawing-option {
-    display: block;
-    width: 150px;
-    height: 150px;
-    border-radius: 15px;
-    background: #fff;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 160px;
+    height: 160px;
+    border-radius: 20px;
+    background: rgba(255, 255, 255, 0.5);
     padding: 10px;
-    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
-    transition: transform 0.2s;
+    box-shadow: var(--shadow);
+    transition: transform 0.2s ease, box-shadow 0.3s ease;
+    backdrop-filter: blur(10px);
 }
 
 .drawing-option:hover {
     transform: scale(1.1);
+    box-shadow: 0 6px 15px rgba(0, 0, 0, 0.3);
 }
 
 .drawing-thumbnail {
     width: 100%;
     height: auto;
-}
-
-canvas {
-    border: 3px solid #fff;
-    background: #f8f8f8;
-    margin-top: 20px;
     border-radius: 10px;
-    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
 }
 
+/* Canvas */
+canvas {
+    border: 3px solid rgba(255, 255, 255, 0.5);
+    background: rgba(255, 255, 255, 0.3);
+    margin-top: 20px;
+    border-radius: 15px;
+    box-shadow: var(--shadow);
+    backdrop-filter: blur(5px);
+}
+
+/* Buttons */
 button {
-    background: #ff6f61;
+    background: var(--primary-color);
     color: white;
     border: none;
-    padding: 10px 20px;
+    padding: 12px 24px;
     font-size: 1rem;
-    border-radius: 8px;
+    border-radius: 10px;
     cursor: pointer;
     margin-top: 20px;
-    transition: background 0.3s;
+    transition: all 0.3s ease;
+    box-shadow: var(--shadow);
 }
 
 button:hover {
-    background: #d9534f;
+    background: var(--button-hover);
+    transform: translateY(-2px);
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.25);
+}
+
+/* Bottom Navigation */
+.bottom-nav {
+    position: sticky;
+    bottom: 0;
+    width: 100%;
+    background: var(--nav-bg);
+    backdrop-filter: blur(10px);
+    display: flex;
+    justify-content: space-around;
+    padding: 12px 0;
+    border-top: 2px solid rgba(255, 255, 255, 0.3);
+    box-shadow: var(--shadow);
+}
+
+.nav-item {
+    text-decoration: none;
+    color: var(--text-color);
+    font-size: 16px;
+    font-weight: bold;
+    padding: 12px;
+    transition: color 0.3s ease;
+}
+
+.nav-item:hover {
+    color: var(--primary-color);
+    transform: scale(1.05);
+}
+
+/* Active Tab in Bottom Navigation */
+.nav-item.active {
+    color: #ff6f61;
+    font-weight: bold;
+}
+
+/* Two-Column Layout for Feedback Section */
+.feedback-container {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: flex-start;
+    gap: 30px;
+    width: 90%;
+    max-width: 1000px;
+    margin: 20px auto;
+}
+
+/* Left Side - Input Form */
+.post-box {
+    flex: 1;
+    max-width: 400px;
+    background: rgba(255, 255, 255, 0.7);
+    padding: 20px;
+    border-radius: 12px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+    backdrop-filter: blur(10px);
+}
+
+.post-box input, 
+.post-box textarea {
+    width: 90%;
+    padding: 12px;
+    margin-bottom: 10px;
+    border: none;
+    border-radius: 8px;
+    font-size: 1rem;
+    font-family: 'Poppins', sans-serif;
+    background: rgba(255, 255, 255, 0.8);
+}
+
+.post-box textarea {
+    resize: none;
+    height: 120px;
+}
+
+.post-box button {
+    width: 100%;
+    padding: 12px;
+    background: var(--primary-color);
+    color: white;
+    border: none;
+    border-radius: 8px;
+    font-size: 1rem;
+    cursor: pointer;
+    transition: all 0.3s;
+}
+
+.post-box button:hover {
+    background: var(--button-hover);
+}
+
+/* Right Side - Feedback Feed */
+.feed-container {
+    flex: 1;
+    max-width: 500px;
+}
+
+.post {
+    background: rgba(255, 255, 255, 0.9);
+    padding: 15px;
+    border-radius: 12px;
+    margin-bottom: 15px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+    backdrop-filter: blur(5px);
+}
+
+.post-header {
+    font-weight: bold;
+    color: #444;
+    margin-bottom: 5px;
+}
+
+.post-content {
+    color: #666;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    .feedback-container {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .post-box, .feed-container {
+        max-width: 100%;
+    }
 }
