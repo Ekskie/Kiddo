@@ -1,27 +1,58 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Kiddo - Trace {{ shape }}</title>
+    <title>Kiddo - Draw at Your Own</title>
     <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
 </head>
+
 <body>
-    <header>
-        <img src="{{ url_for('static', filename='images/logo.png') }}" alt="Kiddo Logo" class="logo">
-    </header>
     <h1>Draw at Your Own</h1>
-    <p id="scoreDisplay"></p>
-    
+    <div class="button-group">
+        <label for="brushType">Brush Type:</label>
+        <select id="brushType">
+            <option value="solid">Solid</option>
+            <option value="dotted">Dotted</option>
+            <option value="dashed">Dashed</option>
+            <option value="calligraphy">Calligraphy</option>
+        </select>
+
+        <label for="brushColor">Brush Color:</label>
+        <input type="color" id="brushColor" value="#000000">
+        <label for="smoothingSlider">Smoothing Level: <span id="smoothingValue">10</span></label>
+        <input type="range" id="smoothingSlider" min="1" max="20" value="10">
+        <label for="brushSize">Size:</label>
+        <input type="range" id="brushSize" min="2" max="20" value="5">
+        <button id="brushButton"><svg xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960"
+                width="24px" fill="#000000">
+                <path
+                    d="M240-120q-45 0-89-22t-71-58q26 0 53-20.5t27-59.5q0-50 35-85t85-35q50 0 85 35t35 85q0 66-47 113t-113 47Zm0-80q33 0 56.5-23.5T320-280q0-17-11.5-28.5T280-320q-17 0-28.5 11.5T240-280q0 23-5.5 42T220-202q5 2 10 2h10Zm230-160L360-470l358-358q11-11 27.5-11.5T774-828l54 54q12 12 12 28t-12 28L470-360Zm-190 80Z" />
+            </svg></button>
+        <button id="eraserButton"><svg xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960"
+                width="24px" fill="#000000">
+                <path
+                    d="M690-240h190v80H610l80-80Zm-500 80-85-85q-23-23-23.5-57t22.5-58l440-456q23-24 56.5-24t56.5 23l199 199q23 23 23 57t-23 57L520-160H190Zm296-80 314-322-198-198-442 456 64 64h262Zm-6-240Z" />
+            </svg></button>
+        <button id="undoButton"><svg xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960"
+                width="24px" fill="#000000">
+                <path
+                    d="M280-200v-80h284q63 0 109.5-40T720-420q0-60-46.5-100T564-560H312l104 104-56 56-200-200 200-200 56 56-104 104h252q97 0 166.5 63T800-420q0 94-69.5 157T564-200H280Z" />
+            </svg></button>
+    </div>
     <!-- Canvas with shape name for JS -->
     <canvas id="drawingCanvas" data-shape="{{ shape }}"></canvas>
-    
-    <div class="button-group">
-        <button id="undoButton">Undo</button>
+
+
+    <div>
         <button id="submitToCommunity">Submit to Community</button>
-        <button id="backToShapes" onclick="window.location.href='{{ url_for('community_draw') }}'">Back to Community</button>
+        <button id="backToShapes" onclick="window.location.href='{{ url_for('community_draw') }}'">Back to
+            Community</button>
+        <button id="clearCanvas">Clear Canvas</button>
     </div>
-    
+
     <script src="{{ url_for('static', filename='community_drawing.js') }}"></script>
 </body>
+
 </html>
