@@ -12,6 +12,8 @@
         <img src="{{ url_for('static', filename='images/logo.png') }}" alt="Kiddo Logo" class="logo">
     </header>
     <h1>Trace: {{ shape }}</h1>
+
+    <p id="scoreDisplay"></p>
     
     <!-- Canvas with shape name for JS -->
     <canvas id="drawingCanvas" data-shape="{{ shape }}"></canvas>
@@ -20,7 +22,7 @@
     <button id="backToShapes" onclick="window.location.href='{{ url_for('home') }}'">Back to Shapes</button>
     
     <button id="submitTrace">Submit</button>
-    <p id="scoreDisplay"></p>
+    
     
     <script src="{{ url_for('static', filename='script.js') }}"></script>
 </body>
