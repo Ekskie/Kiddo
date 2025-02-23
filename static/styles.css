@@ -108,7 +108,7 @@ button:hover {
 
 /* Bottom Navigation */
 .bottom-nav {
-    position: sticky;
+    position: fixed;
     bottom: 0;
     width: 100%;
     background: var(--nav-bg);
