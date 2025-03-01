@@ -36,7 +36,6 @@
             height: auto;
             border-radius: 5px;
             aspect-ratio: 1/1;
-            loading: lazy;
         }
         .username {
             margin-top: 10px;
@@ -121,7 +120,7 @@
                         drawingDiv.classList.add('drawing');
                         
                         drawingDiv.innerHTML = `
-                            <img src="${drawing.image_url}" alt="Drawing by ${drawing.username}" onclick="openModal('${drawing.image_url}', '${drawing.username}')">
+                            <img src="${drawing.image_url}" alt="Drawing by ${drawing.username}" onclick="openModal('${drawing.image_url}', '${drawing.username}')" loading="lazy">
                             <p class="username">${drawing.username}</p>
                         `;
                         gallery.appendChild(drawingDiv);
